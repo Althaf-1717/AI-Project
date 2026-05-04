@@ -10,3 +10,5 @@ pyjwt
 email-validator
 google-auth
 python-multipart
+groq
+bcrypt

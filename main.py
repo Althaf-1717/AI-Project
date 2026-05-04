@@ -21,7 +21,7 @@ import tempfile
 # ─── Load environment variables ───────────────────────────────────────────────
 load_dotenv()
 
-GEMINI_API_KEY   = os.getenv("GEMINI_API_KEY", "AIzaSyDdHT13E890A_a6VC4J0WCVZPzNGcAoUBM")
+GEMINI_API_KEY   = os.getenv("GEMINI_API_KEY", "")
 MONGO_URI        = os.getenv("MONGO_URI", "mongodb://localhost:27017")
 JWT_SECRET       = os.getenv("JWT_SECRET", "pas_gpt_super_secret_key_2024")
 MAIL_EMAIL       = os.getenv("MAIL_EMAIL", "")
