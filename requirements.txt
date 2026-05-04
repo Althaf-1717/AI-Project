@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+google-generativeai
+pydantic
+python-dotenv
+opencv-python
+motor
+passlib[bcrypt]
+pyjwt
+email-validator
+google-auth
+python-multipart

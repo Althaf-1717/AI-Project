@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAS GPT | Enterprise Cognitive Solutions</title>
+    <meta name="description" content="PAS GPT — AI-powered enterprise assistant. Build smarter, scale faster with cognitive intelligence.">
+    <link rel="stylesheet" href="/static/style.css?v=3.1">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="dark-theme" data-accent="violet">
+
+<!-- ═══════════════════════════════════════════════════
+     LANDING PAGE
+════════════════════════════════════════════════════ -->
+<div id="landing-page" class="landing-overlay">
+
+    <!-- Top Navigation Bar -->
+    <nav class="landing-nav anim-slide-down">
+        <div class="nav-brand">
+            <span class="brand-dot"></span>
+            <span class="brand-name">PAS GPT</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#about" class="nav-link">About</a>
+        </div>
+        <div class="nav-auth">
+            <button id="open-login-btn" class="btn-nav-login">Log In</button>
+            <button id="open-signup-btn" class="btn-nav-signup">Get Started →</button>
+            <button id="landing-theme-btn" class="btn-theme-icon" title="Change Theme">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+            <!-- Hidden Theme Popover (same as dashboard) -->
+            <div id="landing-theme-popover" class="theme-popover hidden">
+                <p>Choose Theme</p>
+                <div class="palette-toggle">
+                    <button class="color-btn orange" data-color="orange" title="Amber"></button>
+                    <button class="color-btn blue" data-color="blue" title="Sky"></button>
+                    <button class="color-btn green" data-color="green" title="Emerald"></button>
+                    <button class="color-btn pink" data-color="pink" title="Rose"></button>
+                    <button class="color-btn purple" data-color="purple" title="Amethyst"></button>
+                    <button class="color-btn red" data-color="red" title="Ruby"></button>
+                    <button class="color-btn violet active" data-color="violet" title="Violet"></button>
+                </div>
+                <div class="mode-toggle">
+                    <span>Dark / Light</span>
+                    <label class="theme-switch">
+                        <input type="checkbox" id="theme-toggle-check" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="hero-content anim-fade-up">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                AI-Powered Enterprise Intelligence
+            </div>
+            <h1 class="hero-title">
+                Precision AI for<br>
+                <span class="gradient-text">Smarter Businesses</span>
+            </h1>
+            <p class="hero-subtitle">PAS GPT delivers enterprise-grade cognitive intelligence — from coding assistance and technical explanations to data analysis and strategic insights.</p>
+            <div class="hero-cta">
+                <button id="hero-signup-btn" class="btn-primary-hero">Start for Free →</button>
+                <button id="hero-login-link" class="btn-ghost-hero">Already have an account? Log in</button>
+            </div>
+        </div>
+        <div class="hero-visual anim-fade-up-delay">
+            <div class="chat-preview-card">
+                <div class="preview-header">
+                    <span class="p-dot green"></span><span>Cognitive Relay Active</span>
+                </div>
+                <div class="preview-msg ai">Hello! I'm PAS GPT. How can I assist you today?</div>
+                <div class="preview-msg user">Write a Java Hello World program</div>
+                <div class="preview-msg ai typing">
+                    <div class="preview-code">
+                        <span class="code-lang">java</span>
+                        <pre>public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="section-header anim-on-scroll">
+            <h2>Everything you need,<br><span class="gradient-text">built for professionals</span></h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card anim-on-scroll" style="--delay:0ms">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h3>Multi-Language Code</h3>
+                <p>Get perfect code in Java, Python, C++, JavaScript, React, Node.js, MongoDB and more — with step-by-step explanations.</p>
+            </div>
+            <div class="feature-card anim-on-scroll" style="--delay:100ms">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>Persistent Sessions</h3>
+                <p>Your conversation history is tracked per session. Start new chats or continue where you left off.</p>
+            </div>
+            <div class="feature-card anim-on-scroll" style="--delay:200ms">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Secure & Private</h3>
+                <p>Your data is protected with JWT authentication, bcrypt password hashing, and MongoDB-backed user accounts.</p>
+            </div>
+            <div class="feature-card anim-on-scroll" style="--delay:300ms">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+                </div>
+                <h3>Voice Commands</h3>
+                <p>Speak your questions directly using the built-in voice recognition channel for a hands-free experience.</p>
+            </div>
+            <div class="feature-card anim-on-scroll" style="--delay:400ms">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3>99.9% Uptime</h3>
+                <p>Powered by Google's Gemini infrastructure for near-instant responses and maximum reliability.</p>
+            </div>
+            <div class="feature-card anim-on-scroll" style="--delay:500ms">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </div>
+                <h3>Multiple Themes</h3>
+                <p>Personalize your experience with 7 color themes and dark/light mode — saved across sessions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="footer-brand">
+            <span class="brand-dot"></span>
+            <span>PAS GPT</span>
+        </div>
+        <p>Build Smarter. Scale Faster.</p>
+        <p class="footer-copy">© 2024 PAS GPT — Enterprise Cognitive Solutions</p>
+    </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     AUTH MODAL (Login / Signup)
+════════════════════════════════════════════════════ -->
+<div id="auth-modal" class="auth-modal-overlay hidden">
+    <div class="auth-modal">
+        <button id="close-auth-btn" class="auth-close-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <!-- Login Panel -->
+        <div id="auth-login" class="auth-panel active">
+            <div class="auth-modal-brand">
+                <span class="brand-dot large"></span>
+                <h2>Welcome Back</h2>
+                <p>Sign in to your PAS GPT account</p>
+            </div>
+
+            <!-- Google Sign-In (loaded dynamically by JS) -->
+            <div id="google-login-wrapper" class="google-btn-wrapper"></div>
+
+            <div class="auth-divider"><span>or continue with email</span></div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="login-email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                <p id="login-error" class="auth-error hidden"></p>
+                <button type="submit" class="btn-auth-submit">
+                    <span>Sign In</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </form>
+            <p class="auth-switch">Don't have an account? <a href="#" id="switch-to-signup">Sign up for free</a></p>
+        </div>
+
+        <!-- Signup Panel -->
+        <div id="auth-signup" class="auth-panel hidden">
+            <div class="auth-modal-brand">
+                <span class="brand-dot large"></span>
+                <h2>Create Account</h2>
+                <p>Join PAS GPT and build smarter</p>
+            </div>
+
+            <!-- Google Sign-Up (loaded dynamically by JS) -->
+            <div id="google-signup-wrapper" class="google-btn-wrapper"></div>
+
+            <div class="auth-divider"><span>or sign up with email</span></div>
+
+            <form id="signup-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Your name" required minlength="2">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="signup-email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password <span class="label-hint">(min. 6 characters)</span></label>
+                    <input type="password" id="signup-password" placeholder="••••••••" required minlength="6">
+                    <div id="pw-strength-bar" class="pw-strength-bar">
+                        <div class="pw-fill"></div>
+                    </div>
+                </div>
+                <p id="signup-error" class="auth-error hidden"></p>
+                <button type="submit" class="btn-auth-submit">
+                    <span>Create Account</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </form>
+            <p class="auth-switch">Already have an account? <a href="#" id="switch-to-login">Log in</a></p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MAIN CHAT DASHBOARD (hidden until logged in)
+════════════════════════════════════════════════════ -->
+<div id="app-container" class="dashboard" style="display:none;">
+    <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-brand-left" style="display: flex; align-items: center; gap: 10px;">
+                <div class="mini-logo"></div>
+                <h2>PAS GPT</h2>
+            </div>
+            <button id="close-sidebar-btn" class="close-sidebar-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+
+        <div class="sidebar-new-chat-area">
+            <button id="new-chat-btn" class="btn-new-chat">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                New Chat
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div id="nav-chat" class="nav-item active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>Conversations</span>
+            </div>
+
+            <div class="history-section">
+                <p class="history-label">Chat History</p>
+                <div id="history-list" class="history-list"></div>
+            </div>
+
+            <div id="nav-tools" class="nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <span>System Tools</span>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-card">
+                <div class="user-avatar" id="user-avatar-icon">U</div>
+                <div class="user-info">
+                    <p id="sidebar-user-name">User</p>
+                    <p id="sidebar-user-email" class="user-email">loading...</p>
+                </div>
+                <button id="logout-btn" class="btn-logout" title="Logout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="chat-area">
+        <!-- CONVERSATION VIEW -->
+        <div id="view-chat" class="view-panel active">
+            <header class="chat-header-bar">
+                <div class="header-left" style="display: flex; align-items: center; gap: 15px;">
+                    <button id="mobile-menu-btn" class="mobile-menu-btn" title="Open Menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <div class="status-indicator">
+                        <div class="pulse-dot"></div>
+                        <span>Cognitive Relay Active</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="dash-theme-container">
+                        <button id="dash-theme-btn" class="btn-theme-icon" title="Change Theme">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                        </button>
+                        <div id="dash-theme-popover" class="theme-popover hidden">
+                            <p>Choose Theme</p>
+                            <div class="palette-toggle">
+                                <button class="color-btn orange" data-color="orange" title="Amber"></button>
+                                <button class="color-btn blue" data-color="blue" title="Sky"></button>
+                                <button class="color-btn green" data-color="green" title="Emerald"></button>
+                                <button class="color-btn pink" data-color="pink" title="Rose"></button>
+                                <button class="color-btn purple" data-color="purple" title="Amethyst"></button>
+                                <button class="color-btn red" data-color="red" title="Ruby"></button>
+                                <button class="color-btn violet active" data-color="violet" title="Violet"></button>
+                            </div>
+                            <div class="mode-toggle">
+                                <span>Dark / Light</span>
+                                <label class="theme-switch">
+                                    <input type="checkbox" id="dash-theme-toggle-check" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div id="chat-box" class="messages-container"></div>
+            <div class="entry-row">
+                <div class="file-badge-container hidden" id="file-badge-container">
+                    <span id="file-badge-name"></span>
+                    <button id="file-remove-btn" title="Remove attachment">&times;</button>
+                </div>
+                <div class="entry-bar">
+                    <input type="file" id="file-upload" accept=".pdf, image/*" hidden>
+                    <button id="attach-btn" title="Attach file" class="attach-trigger">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                    </button>
+                    <textarea id="user-input" placeholder="Ask anything..." rows="1"></textarea>
+                    <div class="entry-actions">
+                        <div class="model-selector" id="model-selector" title="Select AI Model">
+                            <span id="current-model-icon" class="model-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            </span>
+                            <div class="model-dropdown hidden" id="model-dropdown">
+                                <div class="model-option active" data-provider="gemini">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                    <span>Gemini</span>
+                                </div>
+                                <div class="model-option" data-provider="groq">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                    <span>Groq</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="mic-btn" title="Voice Channel">
+                            <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                        </button>
+                        <button id="send-btn" class="send-trigger">
+                            <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SYSTEM TOOLS VIEW -->
+        <div id="view-tools" class="view-panel hidden">
+            <header class="chat-header-bar">
+                <div class="status-indicator">
+                    <div class="pulse-dot blue"></div>
+                    <span>System Diagnostics</span>
+                </div>
+            </header>
+            <div class="tools-dashboard">
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>Model Intelligence</h3>
+                        <div class="stat-row"><span>Logic Engine</span> <strong>Gemini Flash</strong></div>
+                        <div class="stat-row"><span>Max Tokens</span> <strong>2048</strong></div>
+                        <div class="stat-row"><span>Latency</span> <strong>&lt; 100ms</strong></div>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Infrastructure</h3>
+                        <div class="stat-row"><span>Uptime</span> <strong id="uptime-display">00:00:00</strong></div>
+                        <div class="stat-row"><span>Database</span> <strong>MongoDB</strong></div>
+                        <button class="btn-tool" id="reset-session">Reset Logical Cache</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Data Export</h3>
+                        <p>Retrieve current cognitive logs for analytical review.</p>
+                        <button class="btn-tool" id="export-logs">Download JSON Logs</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Camera Overlay -->
+<div id="camera-overlay" class="camera-stage hidden">
+    <div class="camera-module">
+        <video id="camera-feed" autoplay playsinline></video>
+        <button id="close-camera-btn">Disconnect Sensor</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="/static/script.js?v=3.0"></script>
+</body>
+</html>
