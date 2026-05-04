@@ -335,5 +335,28 @@ input:checked + .slider:before { transform:translateX(18px); }
     .sidebar-header { justify-content: space-between; }
     
     .chat-header-bar { padding: 14px 20px; }
+    
+    /* Mobile Chat Input Fixes */
+    .entry-row { padding: 10px 15px 20px; }
+    .entry-bar { padding: 6px 8px 6px 14px; }
+    .entry-bar textarea { font-size: 0.95rem; }
+    .entry-actions button, .attach-trigger { width: 36px; height: 36px; }
+    .model-selector { width: 36px; height: 36px; }
+    .messages-container { padding: 20px 15px; }
+    .message { max-width: 90%; }
+    
+    /* Mobile Landing Page Fixes */
+    .hero-section {
+        flex-direction: column;
+        padding: 100px 20px 40px;
+        gap: 40px;
+        text-align: center;
+    }
+    .hero-cta { justify-content: center; }
+    .hero-title { font-size: 2.4rem; }
+    .hero-visual { width: 100%; }
+    .landing-nav { padding: 15px 20px; gap: 15px; }
+    .nav-links { display: none; /* Hide standard nav links on mobile landing page to save space */ }
+    .features-section { padding: 60px 20px; }
 }
 
