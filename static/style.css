@@ -292,6 +292,7 @@ input:checked + .slider:before { transform:translateX(18px); }
     .model-selector { width: 36px; height: 36px; }
     .messages-container { padding: 20px 15px; }
     .message { max-width: 90%; }
+    .user-msg-actions, .ai-msg-actions { opacity: 1; }
     .hero-section {
         flex-direction: column;
         padding: 100px 20px 40px;
