@@ -364,6 +364,7 @@ function renderHistory() {
       globalHistoryDropdown.style.position = 'fixed';
       globalHistoryDropdown.style.top = (rect.bottom + 5) + 'px';
       globalHistoryDropdown.style.left = (rect.right - 200) + 'px';
+      globalHistoryDropdown.style.right = 'auto';
       
       // Update global dropdown handlers for THIS chat
       globalHistoryDropdown.querySelector('.rename-btn').onclick = (e) => { e.stopPropagation(); globalHistoryDropdown.classList.add('hidden'); const newTitle = prompt('Enter new title:', chat.title); if (newTitle) renameChat(chat.id, newTitle); };
