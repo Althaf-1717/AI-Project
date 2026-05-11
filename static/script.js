@@ -324,6 +324,22 @@ function saveChats() {
   if (chat) syncChat(chat);
 }
 
+let globalHistoryDropdown = document.getElementById('global-history-dropdown');
+if (!globalHistoryDropdown) {
+  globalHistoryDropdown = document.createElement('div');
+  globalHistoryDropdown.id = 'global-history-dropdown';
+  globalHistoryDropdown.className = 'history-dropdown hidden';
+  globalHistoryDropdown.innerHTML = `
+    <div class="dropdown-item share-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Share</div>
+    <div class="dropdown-item group-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Start a group chat</div>
+    <div class="dropdown-item rename-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Rename</div>
+    <div class="dropdown-item pin-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg> Pin chat</div>
+    <div class="dropdown-item archive-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg> Archive</div>
+    <div class="dropdown-item danger del-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg> Delete</div>
+  `;
+  document.body.appendChild(globalHistoryDropdown);
+}
+
 function renderHistory() {
   historyList.innerHTML = '';
   chats.forEach((chat) => {
@@ -342,33 +358,23 @@ function renderHistory() {
     actionsDiv.className = 'history-options';
     actionsDiv.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>';
     
-    const dropdown = document.createElement('div');
-    dropdown.className = 'history-dropdown hidden';
-    dropdown.innerHTML = `
-      <div class="dropdown-item share-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Share</div>
-      <div class="dropdown-item group-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Start a group chat</div>
-      <div class="dropdown-item rename-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Rename</div>
-      <div class="dropdown-item pin-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg> Pin chat</div>
-      <div class="dropdown-item archive-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg> Archive</div>
-      <div class="dropdown-item danger del-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg> Delete</div>
-    `;
-    
     actionsDiv.onclick = (e) => {
       e.stopPropagation();
-      document.querySelectorAll('.history-dropdown').forEach(d => {
-        if(d !== dropdown) d.classList.add('hidden');
-      });
-      dropdown.classList.toggle('hidden');
+      const rect = actionsDiv.getBoundingClientRect();
+      globalHistoryDropdown.style.position = 'fixed';
+      globalHistoryDropdown.style.top = (rect.bottom + 5) + 'px';
+      globalHistoryDropdown.style.left = (rect.right - 200) + 'px';
+      
+      // Update global dropdown handlers for THIS chat
+      globalHistoryDropdown.querySelector('.rename-btn').onclick = (e) => { e.stopPropagation(); globalHistoryDropdown.classList.add('hidden'); const newTitle = prompt('Enter new title:', chat.title); if (newTitle) renameChat(chat.id, newTitle); };
+      globalHistoryDropdown.querySelector('.share-btn').onclick = (e) => { e.stopPropagation(); globalHistoryDropdown.classList.add('hidden'); shareChat(chat.id); };
+      globalHistoryDropdown.querySelector('.del-btn').onclick = (e) => { e.stopPropagation(); globalHistoryDropdown.classList.add('hidden'); if(confirm('Delete this chat?')) deleteChat(chat.id); };
+      globalHistoryDropdown.querySelector('.group-btn').onclick = (e) => { e.stopPropagation(); globalHistoryDropdown.classList.add('hidden'); alert('Group chat feature coming soon!'); };
+      globalHistoryDropdown.querySelector('.pin-btn').onclick = (e) => { e.stopPropagation(); globalHistoryDropdown.classList.add('hidden'); alert('Pin chat feature coming soon!'); };
+      globalHistoryDropdown.querySelector('.archive-btn').onclick = (e) => { e.stopPropagation(); globalHistoryDropdown.classList.add('hidden'); alert('Archive feature coming soon!'); };
+      
+      globalHistoryDropdown.classList.toggle('hidden');
     };
-    
-    dropdown.querySelector('.rename-btn').onclick = (e) => { e.stopPropagation(); dropdown.classList.add('hidden'); const newTitle = prompt('Enter new title:', chat.title); if (newTitle) renameChat(chat.id, newTitle); };
-    dropdown.querySelector('.share-btn').onclick = (e) => { e.stopPropagation(); dropdown.classList.add('hidden'); shareChat(chat.id); };
-    dropdown.querySelector('.del-btn').onclick = (e) => { e.stopPropagation(); dropdown.classList.add('hidden'); if(confirm('Delete this chat?')) deleteChat(chat.id); };
-    dropdown.querySelector('.group-btn').onclick = (e) => { e.stopPropagation(); dropdown.classList.add('hidden'); alert('Group chat feature coming soon!'); };
-    dropdown.querySelector('.pin-btn').onclick = (e) => { e.stopPropagation(); dropdown.classList.add('hidden'); alert('Pin chat feature coming soon!'); };
-    dropdown.querySelector('.archive-btn').onclick = (e) => { e.stopPropagation(); dropdown.classList.add('hidden'); alert('Archive feature coming soon!'); };
-    
-    div.appendChild(dropdown);
     
     div.style.display = "flex";
     div.style.justifyContent = "space-between";
@@ -428,9 +434,9 @@ function appendMessage(role, text) {
   const div = document.createElement('div');
   div.className = role === 'ai' ? 'message ai-message' : 'message user-message';
   if (role === 'ai') {
-    div.innerHTML = `<strong>PAS GPT</strong><div class="msg-content">\${marked.parse(text)}</div>`;
+    div.innerHTML = `<strong>PAS GPT</strong><div class="msg-content">${marked.parse(text)}</div>`;
   } else {
-    div.innerHTML = `<strong>You</strong><p class="user-text">\${text.replace(/</g,'&lt;')}</p>`;
+    div.innerHTML = `<strong>You</strong><p class="user-text">${text.replace(/</g,'&lt;')}</p>`;
     const actions = document.createElement('div');
     actions.className = 'msg-actions';
     actions.innerHTML = `

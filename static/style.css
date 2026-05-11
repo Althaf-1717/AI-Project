@@ -173,9 +173,9 @@ input:checked + .slider:before { transform:translateX(18px); }
 .history-item:hover .history-options { opacity: 1; }
 .history-options:hover { background: rgba(0,0,0,0.05); }
 .dark-theme .history-options:hover { background: rgba(255,255,255,0.1); }
-.history-dropdown { position: absolute; right: 0; top: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; flex-direction: column; padding: 8px 0; z-index: 1000; min-width: 160px; }
+.history-dropdown { position: absolute; right: 0; top: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); display: flex; flex-direction: column; padding: 6px 0; z-index: 1000; min-width: 180px; font-family: var(--font-body); }
 .history-dropdown.hidden { display: none; }
-.dropdown-item { padding: 8px 16px; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text); cursor: pointer; transition: 0.2s; }
+.dropdown-item { padding: 8px 16px; display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: var(--text); cursor: pointer; transition: background 0.2s; }
 .dropdown-item:hover { background: var(--bg); }
 .dropdown-item.danger { color: #ef4444; }
 .sidebar-footer { border-top:1px solid var(--border); padding:16px 20px 0; }
