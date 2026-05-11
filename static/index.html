@@ -10,13 +10,7 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body class="dark-theme" data-accent="violet">
-
-<!-- ═══════════════════════════════════════════════════
-     LANDING PAGE
-════════════════════════════════════════════════════ -->
 <div id="landing-page" class="landing-overlay">
-
-    <!-- Top Navigation Bar -->
     <nav class="landing-nav anim-slide-down">
         <div class="nav-brand">
             <span class="brand-dot"></span>
@@ -32,7 +26,6 @@
             <button id="landing-theme-btn" class="btn-theme-icon" title="Change Theme">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
             </button>
-            <!-- Hidden Theme Popover (same as dashboard) -->
             <div id="landing-theme-popover" class="theme-popover hidden">
                 <p>Choose Theme</p>
                 <div class="palette-toggle">
@@ -54,8 +47,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
     <section class="hero-section" id="hero">
         <div class="hero-bg-orbs">
             <div class="orb orb-1"></div>
@@ -97,8 +88,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Features Section -->
     <section class="features-section" id="features">
         <div class="section-header anim-on-scroll">
             <h2>Everything you need,<br><span class="gradient-text">built for professionals</span></h2>
@@ -148,8 +137,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer class="landing-footer">
         <div class="footer-brand">
             <span class="brand-dot"></span>
@@ -159,30 +146,19 @@
         <p class="footer-copy">© 2024 PAS GPT — Enterprise Cognitive Solutions</p>
     </footer>
 </div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     AUTH MODAL (Login / Signup)
-════════════════════════════════════════════════════ -->
 <div id="auth-modal" class="auth-modal-overlay hidden">
     <div class="auth-modal">
         <button id="close-auth-btn" class="auth-close-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
-
-        <!-- Login Panel -->
         <div id="auth-login" class="auth-panel active">
             <div class="auth-modal-brand">
                 <span class="brand-dot large"></span>
                 <h2>Welcome Back</h2>
                 <p>Sign in to your PAS GPT account</p>
             </div>
-
-            <!-- Google Sign-In (loaded dynamically by JS) -->
             <div id="google-login-wrapper" class="google-btn-wrapper"></div>
-
             <div class="auth-divider"><span>or continue with email</span></div>
-
             <form id="login-form">
                 <div class="form-group">
                     <label>Email Address</label>
@@ -200,20 +176,14 @@
             </form>
             <p class="auth-switch">Don't have an account? <a href="#" id="switch-to-signup">Sign up for free</a></p>
         </div>
-
-        <!-- Signup Panel -->
         <div id="auth-signup" class="auth-panel hidden">
             <div class="auth-modal-brand">
                 <span class="brand-dot large"></span>
                 <h2>Create Account</h2>
                 <p>Join PAS GPT and build smarter</p>
             </div>
-
-            <!-- Google Sign-Up (loaded dynamically by JS) -->
             <div id="google-signup-wrapper" class="google-btn-wrapper"></div>
-
             <div class="auth-divider"><span>or sign up with email</span></div>
-
             <form id="signup-form">
                 <div class="form-group">
                     <label>Full Name</label>
@@ -240,11 +210,6 @@
         </div>
     </div>
 </div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     MAIN CHAT DASHBOARD (hidden until logged in)
-════════════════════════════════════════════════════ -->
 <div id="app-container" class="dashboard" style="display:none;">
     <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
     <aside class="sidebar">
@@ -257,31 +222,26 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
         </div>
-
         <div class="sidebar-new-chat-area">
             <button id="new-chat-btn" class="btn-new-chat">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 New Chat
             </button>
         </div>
-
         <nav class="sidebar-nav">
             <div id="nav-chat" class="nav-item active">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 <span>Conversations</span>
             </div>
-
             <div class="history-section">
                 <p class="history-label">Chat History</p>
                 <div id="history-list" class="history-list"></div>
             </div>
-
             <div id="nav-tools" class="nav-item">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 <span>System Tools</span>
             </div>
         </nav>
-
         <div class="sidebar-footer">
             <div class="user-card">
                 <div class="user-avatar" id="user-avatar-icon">U</div>
@@ -295,9 +255,7 @@
             </div>
         </div>
     </aside>
-
     <main class="chat-area">
-        <!-- CONVERSATION VIEW -->
         <div id="view-chat" class="view-panel active">
             <header class="chat-header-bar">
                 <div class="header-left" style="display: flex; align-items: center; gap: 15px;">
@@ -374,8 +332,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- SYSTEM TOOLS VIEW -->
         <div id="view-tools" class="view-panel hidden">
             <header class="chat-header-bar">
                 <div class="status-indicator">
@@ -407,15 +363,12 @@
         </div>
     </main>
 </div>
-
-<!-- Camera Overlay -->
 <div id="camera-overlay" class="camera-stage hidden">
     <div class="camera-module">
         <video id="camera-feed" autoplay playsinline></video>
         <button id="close-camera-btn">Disconnect Sensor</button>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="/static/script.js?v=3.0"></script>
 </body>
