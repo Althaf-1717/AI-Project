@@ -339,7 +339,10 @@ async def chat_endpoint(
         history_list = json.loads(history)
         if file:
             provider = "gemini"
-        if provider == "groq" and GROQ_AVAILABLE:
+        if provider == "groq":
+            if not GROQ_AVAILABLE:
+                return {"response": "Groq is currently offline or not configured correctly on the server. Please check that GROQ_API_KEY is added to your Render Environment Variables.", "action": "none"}
+            
             messages = [{"role": "system", "content": system_instruction}]
             for msg in history_list:
                 role = "user" if msg.get("role") == "user" else "assistant"
