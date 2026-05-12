@@ -337,10 +337,16 @@ async def chat_endpoint(
         return {"response": f"The current time is {time_str}.", "action": "none"}
     try:
         history_list = json.loads(history)
+        print(f"[DEBUG] Request received. Message: {user_msg}, Provider requested: {provider}, File attached: {file is not None}, GROQ_AVAILABLE: {GROQ_AVAILABLE}")
+        
         if file:
+            print("[DEBUG] File attached, forcing provider to gemini")
             provider = "gemini"
+            
         if provider == "groq":
+            print("[DEBUG] Executing Groq block")
             if not GROQ_AVAILABLE:
+                print("[DEBUG] GROQ_AVAILABLE is False, returning error")
                 return {"response": "Groq is currently offline or not configured correctly on the server. Please check that GROQ_API_KEY is added to your Render Environment Variables.", "action": "none"}
             
             messages = [{"role": "system", "content": system_instruction}]
