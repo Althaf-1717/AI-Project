@@ -498,14 +498,39 @@ const fileRemoveBtn = document.getElementById('file-remove-btn');
 attachBtn.addEventListener('click', () => {
   fileUpload.click();
 });
+function handleFileSelection(file) {
+  if (!file) return;
+  const dt = new DataTransfer();
+  dt.items.add(file);
+  fileUpload.files = dt.files;
+  fileBadgeName.textContent = file.name;
+  fileBadgeContainer.classList.remove('hidden');
+  selectedProvider = 'gemini';
+  modelOptions.forEach(o => o.classList.remove('active'));
+  const geminiOpt = document.querySelector('.model-option[data-provider="gemini"]');
+  if(geminiOpt) {
+    geminiOpt.classList.add('active');
+    currentModelIcon.innerHTML = geminiOpt.querySelector('svg').outerHTML;
+  }
+}
+
 fileUpload.addEventListener('change', (e) => {
   if (e.target.files.length > 0) {
-    fileBadgeName.textContent = e.target.files[0].name;
-    fileBadgeContainer.classList.remove('hidden');
-    selectedProvider = 'gemini';
-    modelOptions.forEach(o => o.classList.remove('active'));
-    document.querySelector('.model-option[data-provider="gemini"]').classList.add('active');
-    currentModelIcon.innerHTML = document.querySelector('.model-option[data-provider="gemini"] svg').outerHTML;
+    handleFileSelection(e.target.files[0]);
+  }
+});
+
+document.body.addEventListener('dragover', (e) => e.preventDefault());
+document.body.addEventListener('drop', (e) => {
+  e.preventDefault();
+  if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+    handleFileSelection(e.dataTransfer.files[0]);
+  }
+});
+
+userInput.addEventListener('paste', (e) => {
+  if (e.clipboardData && e.clipboardData.files && e.clipboardData.files.length > 0) {
+    handleFileSelection(e.clipboardData.files[0]);
   }
 });
 fileRemoveBtn.addEventListener('click', () => {
