@@ -388,6 +388,7 @@ function renderHistory() {
 }
 
 function switchChat(id) {
+  if (typeof showChatView === 'function') showChatView();
   currentChatId = id;
   renderHistory();
   chatBox.innerHTML = '';
@@ -405,6 +406,7 @@ function switchChat(id) {
 }
 
 function createNewChat() {
+  if (typeof showChatView === 'function') showChatView();
   currentChatId = 'chat_' + Date.now();
   chats.unshift({ id: currentChatId, title: 'New Chat', messages: [], time: Date.now() });
   saveChats();
@@ -595,21 +597,27 @@ userInput.addEventListener('input', function() {
   this.style.height = 'auto';
   this.style.height = this.scrollHeight + 'px';
 });
-document.getElementById('nav-chat').addEventListener('click', () => {
+function showChatView() {
+  document.getElementById('view-chat').classList.remove('hidden');
   document.getElementById('view-chat').classList.add('active');
   document.getElementById('view-tools').classList.remove('active');
   document.getElementById('view-tools').classList.add('hidden');
-  document.getElementById('view-chat').classList.remove('hidden');
   document.getElementById('nav-chat').classList.add('active');
-  document.getElementById('nav-tools').classList.remove('active');
-});
-document.querySelector('.user-card').addEventListener('click', (e) => {
-  if (e.target.closest('#logout-btn')) return;
+}
+
+function showToolsView() {
+  document.getElementById('view-tools').classList.remove('hidden');
   document.getElementById('view-tools').classList.add('active');
   document.getElementById('view-chat').classList.remove('active');
   document.getElementById('view-chat').classList.add('hidden');
-  document.getElementById('view-tools').classList.remove('hidden');
   document.getElementById('nav-chat').classList.remove('active');
+}
+
+document.getElementById('nav-chat').addEventListener('click', showChatView);
+
+document.querySelector('.user-card').addEventListener('click', (e) => {
+  if (e.target.closest('#logout-btn')) return;
+  showToolsView();
 });
 const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
 if (sidebarToggleBtn) {
